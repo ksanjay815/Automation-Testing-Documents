@@ -1,0 +1,5 @@
+1. Take a String Sanjay Kumar and Print it as Kumar Sanjay.
+2. Print all(no of a) a in the string ajdskfjjgeiqaadffagja.
+3. Reverse of a no.
+4. HashMap & HashSet using hashmap count no of a in String.....
+

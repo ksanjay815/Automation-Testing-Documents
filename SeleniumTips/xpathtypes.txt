@@ -1,0 +1,92 @@
+
+
+http://demo.guru99.com/test/selenium-xpath.html
+1.XPath=//tagname[@attribute='value']
+Absolute XPath  for google search   ------------------------------------ /html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input
+Relative XPath  for google search                                       //input[@name="q"]
+
+									//input[@id="u_2_b_KY"]     for gmail create account
+
+
+2. Contains()
+Contains() is a method used in an XPath expression. It is used
+ when the value of any attribute changes dynamically — for example, sign up information.
+XPath=//*[contains(@id,'Name')
+
+
+									//input[contains(@class,"inputtext _58mg _5dba _2ph-")]
+
+
+
+3. Using OR & AND
+XPath=//*[@id='FirstName' or @name='LastName']
+XPath=//*[@id='FirstName' and @name='FirstName']
+
+									//input[@id="u_2_b_KY" or @name="Firstname"]
+									//input[@id="u_2_b_KY" and @name="firstname"]
+
+
+4. Starts-With Function
+XPath=//input[starts-with(@class,'form')]//
+
+									 //input[starts-with(@name,'reg_email__')]
+
+
+5. Text()
+XPath=//*[text()='Username or email'] 
+
+									//a[text()='Images']
+         
+Using Index:
+XPath=(//*[@attribute='value'])[index]
+
+									(//input[contains(@name,'name')])[2]
+
+
+XPath axes methods
+
+a) Following:
+Selects all elements in the document of the current node( ) [ UserID input box is the current node] as shown in the below screen.
+
+Xpath=//*[@type='text']//following::input
+
+b) Ancestor:
+The ancestor axis selects all ancestors element (grandparent, parent, etc.) of the current node as shown in the below screen.
+
+In the below expression, we are finding ancestors element of the current node("ENTERPRISE TESTING" node).
+
+Xpath=//*[text()='Enterprise Testing']//ancestor::div
+
+
+c) Child:
+Selects all children elements of the current node (Java) as shown in the below screen.
+
+Xpath=//*[@id='java_technologies']//child::li
+d) Preceding:
+Select all nodes that come before the current node as shown in the below screen.
+
+In the below expression, it identifies all the input elements before "LOGIN" button that is Userid and password input element.
+
+Xpath=//*[@type='submit']//preceding::input  
+
+
+e) Following-sibling:
+Select the following siblings of the context node. Siblings are at the same level of the current node as shown in the below screen. It will find the element after the current node.
+
+ xpath=//*[@type='submit']//following-sibling::input
+
+f) Parent:
+Selects the parent of the current node as shown in the below screen.
+
+Xpath=//*[@id='rt-feature']//parent::div
+
+g) Self:
+Selects the current node or 'self' means it indicates the node itself as shown in the below screen.
+Xpath =//*[@type='password']//self::input
+
+
+h) Descendant:
+Selects the descendants of the current node as shown in the below screen.
+In the below expression, it identifies all the element descendants to current element ( 'Main body surround' frame element) which means down under the node (child node , grandchild node, etc.).
+
+Xpath=//*[@id='rt-feature']//descendant::a

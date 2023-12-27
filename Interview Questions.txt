@@ -1,0 +1,147 @@
+
+interview questions Selenium :- 
+
+ what are the ways to run maven project?
+1. through eclipse
+2. through cmd
+3. through jenkins
+4. through batch file
+
+
+
+
+ 1.what is system testing 
+ It is an end to end testing of an application done by test engineer like a real user as per CRS is known as System testing.
+
+ 2. what is smoke testing  
+ Testing the basic and critical features of the apllication before doing functional, integration and System testing is known as smoke testing.
+ It is also known as build verification testing.
+
+ 3. what is sanity testing  
+ sanity testing is done to check that newly added functionalities, bugs, etc., have been fixed or not.
+
+ 4. difference between smoke and sanity  
+ Smoke test is done to make sure that the critical features of the application are working fine, performed by developers, test engineer, client.
+ whereas sanity testing is done to check that newly added functionalities, bugs, etc., have been fixed, performed by test engineer.
+
+ 5. explain about sdlc .  
+
+ 6. explain about water fall model
+
+ 7. explain about v model 
+
+ 8. explain about agile model 
+
+ 9. what is a scrum meeting(daily standup meeting)
+ The daily scrum, also called the standup, is a short daily meeting designed to let the team plan out its work for the day
+ and identify any obstacles that could impact that work.
+
+ 10. what is scrum
+ is an agile project management framework that team uses to self organize and work towards a common goal.
+
+ 11. what are the methodologies used in agile 
+    Scrum.
+    Kanban.
+    Lean (LN)
+    Crystal.
+    Dynamic System Development Model, (DSDM)
+    Feature-driven development (FDD) ...
+    Behavior-driven development (BDD)  
+    Extreme Programming (XP)
+    Adaptive software development (ASD)
+    Agile Unified Process (AUP)
+
+ 12. what is the difference between regression and retesting 
+
+ 13. what is grey box testing 
+   Combination of white box testing & black box testing is known as grey box testing.
+
+ 14. explain about stlc 
+
+ 15. explain about bug life cycle  
+
+ 16. what are defect metrices
+
+ 17. what is defect triage  
+   is a process to prioritize the defects based on severity, risk, frequency of occurence.
+
+ 18. what is exploratory testing  
+   Whenever application is given but there is no requirement then we go for exploratory testing.
+   here we find scenarios based on our understanding and convert them into test cases.	
+ 
+ 19. explain about boundary value analysis 
+   Testing the boundary of components or elements on webpage.
+
+ 20. explain about state transition matrix 
+
+ 21. explain about decision table technique 
+   It is a table which help us to decide how many numbers of test cases are needed for a given set of requirements.
+
+ 22.what is a test environment 
+   A test environment is where the testing teams analyze the quality of the application/program. 
+   This also allows computer programmers to identify and fix any bugs that may impact smooth functioning of the application or impair user experience.
+
+ 23. what is test bed ?
+
+
+
+⁭⁫
+ interview questions Java:- 
+
+ 1. what is a variable 
+
+ 2.what is the datatype and explain its types 
+
+ 3. explain about final variable ? 
+ 
+ 4. what is abstract class 
+
+ 4. what are access modifiers 
+
+ 5.what is a static variable 
+
+ 6. difference between static methods and non static methos  
+
+ 7. what is the difference between method and constructor 
+
+ 8. what is method overloading and overriding 
+
+ 9. difference between constructor overloading and overriding
+
+ 10. what is oops and its pillars 
+ Object-oriented programming is a core of Java Programming, which is used for designing a program using classes and objects 
+ 
+ 11. explain about class and object and its difference
+
+ 12.what is interface
+
+ 13. what is abstraction and its difference with interface
+
+ 14. explain about inheritance and its types 
+
+ 15. what is the difference between break and switch
+
+ 16. explain about ploymorphism and its types and difference ? 
+   one thing showing multiple behavior is known as polymorphism. here we can perform single action by different ways
+
+ 17.what is encapsulation ?  
+   Binding and wrapping of code and data together is known as encapsulation.                                     
+
+                       
+     note:- the programs regularly asked are
+
+  1. pallindrome
+
+  2. string reversion
+ 
+  3. prime number 
+
+  4. even odd  
+
+  5. fibonuchi 
+
+  6. armstrong 
+
+  7.factorial 
+
+  8. pattern  

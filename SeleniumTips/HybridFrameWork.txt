@@ -1,0 +1,381 @@
+		Automation Framework
+========================================
+Framework is set of rules or guidelines, Files and Folder Structure(standard folder template)
+that every automation engineer should follow while automating the application.
+
+		(or)
+
+Framework is collection of reusable generic methods, which makes automation
+engineers life easy and also makes coding efficient.
+
+
+Advantages of Automation Framework ?
+=======================================
+1. Contains Generic reusable methods which help in Code Reusability.
+2. Since every automation engineer follows the same format, we can achieve consistency in Automation testing.
+3. Since we follow framework which is very organised, It is easy to develop scripts and easy to understand framework.
+4. Maintaining the developed scripts is easy.
+5. Reduces coding effort and reduces time.
+6. Increases Coding efficiency.
+
+		Stages of FrameWork
+============================================
+1. Design (Generic)
+	- responsible for Design ???  Any experienced  >> Test Manager (or) Test Lead
+2. Implementation(Specific to Project)
+	- responsible for Implementation?? Seniors >> Senior Test Engineers
+3. Execution
+	- responsible for Execution??? Any Automation engineer.
+
+
+Types Of Framework
+=======================
+1. Data-Driven Framework
+2. Keyword-Driven Framework
+3. Method Driven Framework
+4. TestNG
+5. Modular Framework
+6. Hybrid Framework
+
+
+Data-Driven Framework:
+========================== 
+Storing test Data in external files like 
+Excel Sheets, XML, Database, Code, CSV Files, Property file
+and fetching the data through generic reusable methods and 
+passing that data to the application and testing the application is 
+known as Data-Driven Framework
+                               
+
+Why Data-Driven???
+======================   
+As a part of functional testing, we test each and every component of the 
+application with both valid and invalid data...
+And since there will be many components, the test data is huge...
+And if we hard-code test data then code size will be more...
+Also difficult to maintain the test data...
+Hence we keep it in external files and fetch them from there...
+
+
+Why we prefer to store test data in Excel ???
+==============================================
+1. Maintaining the test data in Excel is very Easy
+	(Adding, Modifying and deleting)
+2. ALready Manual Test Engineers would have used excel to store
+	test data, So we just write generic reusable codes to fetch them.
+
+
+	To achieve Data Driven(read data) from excel Sheet, 
+We need to download Apache POI jars..
+Steps: 
+1. Go to google, type 'Download Apache POI jars'
+2. Click on first link(https://poi.apache.org/download.html)
+3. Click on 'The latest stable release is Apache POI 4.1.2' link
+4. Click on 'poi-bin-4.1.2-20200217.tar.gz (28.46 MB)' under Binary Distribution
+5. Click on the first link...
+6. Once Downloaded, uncompress and 
+	add all the jars to build Path
+	a.  Right click on Project, go to build path-->Configure build path
+	b.  Click on 'Libraries' tab
+	c.  Click on 'Add External Jars'
+	d.  Go to the Location where poi jars are downloaded and select all 
+		the jars in poi-4.1.2 folder and also in 'lib','ooxml-lib'
+
+
+To achieve data driven testing from excel sheet ?
+===================================================
+First we need to create an excel sheet and write our test data inside it...
+
+
+Create a folder called 'data' under the project and create an excel under data folder
+Right click on Project-->New-->Folder(name as 'data')
+Right click on data folder-->Properties-->copy path-->open window explorer-->
+paste it in the address bar...
+Right click inside folder-->New-->Excel Sheet(name as inputData)
+
+
+To read the data, we open the file in read mode,
+we use POI libraries and guide our control to a particular cell and get the value in it
+
+To read multiple data, use loop to get data one after another 
+
+To write the data, we open the file in read mode,
+prepare the cell and once we write we open in write mode and save it...
+
+
+
+
+		KeywordDriven Framework ?
+==============================================
+Storing the test data which is commonly or frequently used, as key-value pair
+and reading it by using generic reusable method is known as KeywordDriven Framework
+
+Here we store test data which we use very frequently like browserName, 
+url, valid username and password to login etc, in every test case
+as key-value pair in property file and We use a java class called
+ 'Properties' class and its method called getProperty to get the data.
+
+getProperty() takes key as argument and returns its corresponding value
+
+
+
+Creating property file in our project
+1. Right click on the folder in which we want to create it ---> New ---> File
+(name it as 'config' and give extension as .property or .properties)
+2. Store test data in key-value pair as below
+
+key		value
+browser		Chrome
+url		https://www.actitime.com
+username	admin
+password	manager
+
+	
+
+		
+	StaleElementReferenceException
+============================================
+What is StaleElementReferenceException ???
+==================================================
+The Reference or Address of the element is old...
+
+Why we get this exception?
+When we use findElement()/findElements() to get the address of an element,
+store it in a reference variable, but before performing action 
+if the webpage is refreshed, then on the webpage element's address will change,
+but in reference variable we still have old address,
+and we will be trying to perform action on the old address only.
+Hence we get this exception
+
+How to Handle it???
+========================
+By Using Page Object Model(POM)
+
+What is Page Object Model???
+==================================
+Page Object Model is one of the Java Design Patterns.
+Mainly its an Object Repository which is used to store all the webElements
+in one place. Hence it is also called Element Repository/Page Object Repository
+
+How does POM handle StaleElementReferenceException???
+============================================================
+In Page Object Model, we use @FindBy to get the address of the elements.
+@FindBy will always get the new address/current address/latest address of the elements
+therefore address will never become old. Hence we can avoid getting this exception
+
+How do we Declare elements in POM class?
+=============================================
+POM class means any class which contains @FindBy is known as POM Class..
+In this class we declare by using @FindBy
+
+Syntax: @FindBy(locatorName="locatorValue")  AccessSpecifier ReturnType ElementName;
+Example: @FindBy(id="username") private WebElement unTB;
+
+How do we Initialize all the elements in POM class???
+============================================================
+We use initElements() of PageFactory Class to initialize all the elements at once
+initElements() gives instructions to all the elements(@FindBy) stored to fetch the address
+and store it inside reference variable
+
+initElements() takes two arguments 
+1. WebDriver reference variable
+	means browser class Object reference
+	example: driver
+2. Object Page
+	means in which Class we have stored the elements 
+	If the elements are in the same class/current class only
+	then we use 'this'
+		PageFactory.initElements(driver, this);
+	If the elements are in some other class, 
+	Just create an object of that class and pass reference variable as argument
+	POMClass pc=new POMClass();
+	PageFactory.initElements(driver, pc);
+	
+
+Is User-Defined Constructor Compulsory to initialize elements???
+====================================================================
+No, but initializing the elements with initElements() is mandatory.
+If not initialized then we get NullPointerException
+
+How to handle multiple Elements in POM Class??
+===============================================
+Use the return type as List<WebElement>
+
+
+How do we do utilization in POM class???
+=============================================
+By creating public 'getter' and 'setter' methods
+
+Address returning method
+public WebElement getUntb() {
+return untb;
+}
+
+Action Performing Method
+public void setUsername(String un) {
+untb.sendKeys(un)
+}
+
+
+	Uses of Page Object Model Design Pattern ?
+=======================================================
+1. It is used to store all the elements in one place. Hence it acts as 
+	element Repository/Object Repository
+2. It can avoid StaleElementReferenceException
+3. Code Reusability is achieved, which increses the efficiency of 
+	test Script development
+4. Maintaining automation scripts is easy(Especially when requirements are
+	frequently changing)
+5. Helps in encapsulating the elements
+6. Can achieve abstraction
+7. Can achieve method Driven testing
+
+
+
+	Method Driven Framework
+======================================
+Writing the implementation of the methods in different classes like generic classes
+or POM class and calling the methods in test class 
+and executing the scripts by the help of these methods is known as 
+Method Driven Framework
+
+
+
+
+	Modular Framework: 
+For each and every module in the application we create a separate package 
+	in the framework and we write all the test scripts related to 
+	that module inside that package.
+
+	package Syntax: domain.ApplicationName.ModuleName
+=================================================================	
+	Modules			In Our Fw-> PackageNames
+    ==================      ==================================			
+	TimeTrack		com.actitime.timeTrack
+	Tasks			com.actitime.tasks
+	Reports			com.actitime.reports
+	Users			com.actitime.users
+	Settings		com.actitime.settings
+
+
+
+
+	There are 8 components in framework
+===============================================
+1. Generic Library
+2. Object Repository Library
+3. Test Datasss
+4. Resource
+5. Test Script
+6. Batch Runner
+7. HTML Report
+8. Screenshot
+
+
+
+	Explain your hybrid framework ?
+==========================================
+	How to develop test scripts in our hybrid framework
+
+	There are few things which will never change throughout the whole project.
+	Such Constants I have stored inside IAutoConsts interface.
+	e.g., path of excel file and property file, key and Value of the driver 
+		executable files.
+	
+	There are few things which are repeated like open browser, enter url, 
+	verify loginPage and closeBrowser etc
+	These repeated actions I am storing inside a common class for all the 
+	test scripts called as BaseTest, and I ensure that all the test scripts 
+	extends this BaseTest.(Inheriting common properties from same place)
+
+	While automating the application, we require huge set of test data...
+	So we store it in data repo like excel sheets(Since easy to maintain data)
+	And we write generic reusable file handling libraries to handle data from them.
+
+	All the WebDriver related actions will be written in one place as 
+	generic reusable libraries once	and reused in testscripts whenever required.
+
+	All the elements on the webpage are stored in one place called object repo(POM)
+	wherein we declare, initialize and utilize the elements by writing public getters
+	setters and action methods.
+	
+	In test scripts, we just call generic methods, getters, setters, action methods and
+	execute the automation scripts through these methods.(Test scripts become light weight)
+
+	Since We need to run all my scripts with one click We converted all the test scripts into
+	test suite(Batch executor) and run the suite.(testNG.xml file)
+
+	Finally we get HTML reports and screenshots of failed test cases
+
+
+
+	
+
+	Where have you used Java concepts in your framework ?
+====================================================================
+	
+Inheritance: Commonly repeated actions we have stored in BaseTest and we
+		make sure every test class extends the BaseTest
+
+Encapsulation and Abstraction: We use object repo to store the webelements
+	and we make the elements as private so as to encapsulate them within
+	the POM class, also we provide public getters and setters to
+	access them outside the class but cannot be modified..
+
+	Also here since we are hiding the functionality but just providing the 
+	public getters and setters, hence we use abstraction concept
+
+Polymorphism: While selecting the browser, in the BaseTest, we provide if-else condition
+	wherein depending upon the browser value it decides whether to 
+	load ChromeDriver Object or FirefoxDriver object into the same reference 
+	variable called driver.
+
+Interface: In my framework, there were few things which were never changing like
+		key and value of the driver exe files and excel path and property path
+		To indicate these are constants, We have created an interface and 
+		stored it inside it
+
+	
+Method Overloading: In WebDriverCommonLib Class, we write overloaded methods for 
+		selecting an option from the dropdown
+		
+		public void select(WebElement element, int index) 
+		public void select(WebElement element, String text) 
+		public void select(String value, WebElement element)
+
+
+Method Overriding: In Listener implementation class called MyListener, we have 	
+	implemented the methods of ITestListener interface.
+	And all the methods are getting overridden inside MyListener class
+
+
+
+Abstract Class: In BaseTest Class, though we have two methods, openBrowser() and 
+	closeBrowser()[tearDown()] but they cannot run independently...
+	They are dependent on @Test methods for execution.
+	Since they cant run independently to denote that no automation engineer 
+	should run BaseTest Class, We made BaseTest class as abstract class
+
+
+Collection : While handling multiple elements we use List<WebElement> interface
+	Also in a situation of printing elements text without duplicate etc, 
+	We use Set interface.. So List, Set are Collection topic
+
+
+Array: To store the data in databanks we create an object of two dimensional array
+	in DataProvider concept...
+
+
+static variable / Global public variable:
+	
+	public static WebDriver driver;
+
+	In BaseTest, once we declare driver as WebDriver and make sure every test script 
+	inherits and understands this declaration from BaseTest
+	Hence to access it everywhere, we declare as public.
+	To load this declaration first, before every other class wants to access it
+	we make it as static.
+	
+
+
+                                                                                                                                                                                              

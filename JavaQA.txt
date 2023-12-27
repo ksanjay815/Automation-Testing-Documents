@@ -1,0 +1,184 @@
+ -> How to prevent a class from being sub class in Java?
+Ans) By using final or private keywords
+
+-> Can we override static method?
+Ans) No, we can't override static method in Java, because method  overriding is based upon dynamic binding at run time. Static methods are using static binding at compile time.
+
+-> Can we access private method in Java?
+Ans)  Yes, we can access private method in the same class
+
+-> How to use final keyword?
+Ans) If we use final keyword with variable - we can't reintialise them
+           If we use final keyword with methods -  we can't override them
+           If we use final keyword with classes - we can't inherit them
+
+-> Tell me about access modifiers
+Ans) public, default, protected, private
+
+-> Diff. between checked and unchecked exceptions?
+Ans) The Exception which are checked by the compiler for smooth execution of the program is called Checked Exception (or) classes which are derived from exceptions
+	Eg: IO Exception, ClassNotFoundException etc.,
+ The exceptions which are not checked by the compiler are called unchecked exceptions
+	Eg:  ArithmeticException, ArrayIndexOutOfBoundsException etc.,
+
+-> Diff. between abstract class and interface
+
+-> Diff. between encapsulation and abstraction
+
+-> Diff. between method overloading and method overriding
+
+-> Diff. between HashSet and HashMap
+
+->When to use transient variable
+Ans) When u want to make a variable non serializable in a class. (or) when u dont want to save a value
+
+-> Diff. between ArrayList and LinkedList
+
+->When to use ArrayList and When to use LinkedList
+Ans) ArrayList is best choice for frequent operation. retrieval is getting some data or when search operation need to perform
+           LinkedList is best for frequent operation. Like insert or deletion operations
+
+-> Diff. between String, StringBuffer and StringBuilder
+
+-> Why String is immutable?
+
+-> What is Synchronization?
+
+-> What is multi threading?
+
+-> What is Generics and why we need Generics?
+Ans) for type safe program
+
+-> What is Inheritance and types of Inheritance?
+
+-> How to achieve multiple inheritance in JAva?
+
+-> What is interface?
+Ans) We cant instantiate interfaces
+
+-> Diff. between constructor and methods
+
+-> What is Polymorphism
+
+-> What is Dynamic dispatch and what is static dispatch
+
+-> Diff. between heap, stack and method area?
+
+-> define main method(public static void main)
+
+-> Explain println() 
+
+-> Diff. between JDK,  JRE, and JVM
+
+-> Why Java is independent language and why JVM is dependent
+
+-> What is JIT compiler?
+
+-> Diff. between process and threads
+Ans) An executing instance of a program is called process. A Thread is a subset of proces
+
+-> What are Wrapper classes
+
+-> What is diff. between final, finally, and finalize
+Ans) finally is used to place impotant code, it will be executed whether exception is handled or not
+           finalize -  it is for cleanup activities
+
+-> Diff. between ArrayList and Vector
+
+-> Diff. between HashMap and HashTable
+
+-> Diff. between == and equals()
+
+-> Diff. % and /
+
+-> What is variable and its types
+
+-> Is it necessary to create an object for instance members
+
+->  Is it necessary to create an object for non static members
+
+->  Is it necessary to create an object for static members
+
+-> What is RunTime Polymorphism
+
+-> What is JDBC
+
+-> What is JDBC driver
+Ans) Driver is a software component that enables Java aopplication to interact with database.
+ There are 4 types of JDBC driver. They are: - 1) JDBC ODBC bits driver 2) Native API driver 3) Network protocol driver 4) Thin driver
+
+-> Steps to connect to database
+
+-> Diff. between executeQuery(), executeUpdate() and execute()
+Ans) 	executeQuery()				executeUpdate()				execute()
+        	 It is used to execute the SQL 			This method is used to execute the SQL 		This method is used for all kind of queries
+         	statements to retrieve the data			statements which updates or modifies		
+	This method returns ResultSet object		This method returns a int value			This method returns a boolean value
+	It is used to execute any select queries		It is used to execute any update, delete		It is used for any kind of queries
+
+
+-> What is Lambda expressions
+
+-> What is an Anonymous class
+
+-> What is Functional Interface
+
+-> Tell me about some Pre-defined interfaces and their methods
+
+-> What is auto-boxing and auto-unboxing
+
+-> What is TypeCasting
+
+-> What is UpCasting and DownCasting
+
+-> Diff. between collections and streams
+
+-> Diff. between Set and Map
+
+-> Tell me about some stream methods?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

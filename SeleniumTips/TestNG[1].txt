@@ -1,0 +1,507 @@
+		Unit testing Tools 
+
+		Java 		- JUnit
+		.NET 		- NUnit
+		Java + .NET 	- TestNG
+		PHP		- PHPUnit
+		Python		- PyDev
+		Ruby 		- RSpec	
+
+			TestNG (Test Next Gen)
+	It is an unit testing tool which supports Java and .Net
+It is a third party tool developed by 'Cedric Beust' which is next version of JUnit.
+Used by Developers in WBT and Automation Test engineers in BBT
+which makes automation test engineers life easy
+
+		Uses of TestNG
+1. Obtain the output in the form of emailable HTML reports
+2. Perform Batch Execution
+[Running Multiple Scripts with Single Click by converting all the 
+test scripts into a test Suite(collection of multiple Test Scripts-->Test Suite)]
+3. Provides lot of Annotations and flag which are very helpful in test scripts development
+4. Perform Grouping
+5. perform Data Parameterization
+6. Achieve data driven concept 
+7. Perform Parallel Execution
+8. Perform Cross Browser testing
+9. Provides better assertion features
+10. Provides many flags and test methods dependency features
+11. Provides Listeners feature which can capture screenshots dynamically
+
+
+	Download and Install TestNG(Make Sure system is connected to internet)
+Since TestNG is an eclipse plugin
+1. In Eclipse--> Help--> Install New Software--> Click on 'Add' button
+Provide name as TestNG
+and location as http://dl.bintray.com/testng-team/testng-eclipse-release/
+Select testNG and click on Install, follow instructions till end..
+Restart the eclipse...
+
+		Adding TestNG to our Project.
+1. Right click on the project--> Go to BuildPath-->Add Libraries-->Select TestNG
+	-->Click on Next and Finish Button
+
+
+	Rules of TestNG
+1. Never use Default Package --> Always create a class under some package
+2. Never use main() -->  @Test
+3. Never use SOP for Printing --> Use Reporter.log()
+
+There are two types of reports
+1. High Level Reports - Overview Report which gives status of the testScripts
+	contains no of tests passed, failed, skipped... etc
+
+2. Low Level Reports - Detailed Report which is given by the programmer
+
+	Reporter.log("abc") --> abc will be printed in report only
+	Reporter.log("abc",true)-->abc will be printed in both report as well as console
+
+
+	TestClass--> Any class which contains @Test is called TestClass
+	Class Demo
+
+
+
+How to see the TestNG Report???
+1. Run the above Test class
+2. Refresh the Project(Right Click on Java Project-->Refresh)
+3. New folder called test-output will appear
+4. Expand it--> Go to emailable-report.html-->Right click--> Open with--> Web Browser
+
+
+
+
+
+
+
+
+	Batch Execution
+	Means to execute multiple Test Classes with single click by converting
+	all the required test classes into test Suite.
+	
+	How to generate Test Suite?
+	Right Click on the Project--> TestNG--> Convert to TestNG-->Finish
+	A .xml file is generated as below which is nothing but the test Suite/Batch Executor
+
+<suite name="Suite">
+  <test name="Test">
+    <classes>
+      <class name="testNG.Sumo"/>
+      <class name="testNG.Demo"/>
+      <class name="testNG.Remo"/>
+    </classes>
+  </test> 
+</suite>
+
+
+
+To execute the test suite, Right click on testNG.xml-->Run as--> TestNG Suite
+	
+
+
+
+
+
+
+
+
+
+        Flags of TestNG
+===========================================================================================
+	1. priority - Used to control order of execution of test methods within a class
+	2. enabled - controls the execution of test methods, will not execute if enabled=false
+	3. invocationCount = 3 means test method will loop itself and run for 3 times
+	4. dependsOnMethods - adds dependency feature, 
+				wherein a test method excutes only if its dependent method is pass
+	5. parameters - Used to pick a specific parameter 
+	6. groups - used in grouping required test methods and executing them 
+	7. name - used for identification
+	8. dataprovider - used in data driven concept of TestNG
+	9. description - used to give brief description about a test method
+	10. alwaysRun - If true, then it will run always even if dependent methods are failed
+
+	Can we have multiple test methods in a test class?
+	Yes
+
+	What is the order of execution of test methods if multiple are present?
+	Alphabetical order of their method name
+
+	Can you execute a test method after another test method is executed???
+	Yes, using priority flag
+
+	Can you execute a test method only after another test method is pass???
+	Yes, by using dependsOnMethods flag
+
+	dependsOnMethods Flag
+	By using this flag we can add dependency feature,
+	Means one test method can be dependent on 1 or more methods and 
+	only if all the methods are executed and passed, then dependent method will
+	execute...
+
+	Example : If there are two methods
+	transfer1() and transfer2() and one more method called delete()
+	is dependent on transfer1() and transfer2() then 
+	delete will execute only if transfer1() and transfer2() gets executed and passed
+
+	Either or both of the methods are fail, then delete() gets Skipped
+	And note that if alwaysRun flag is present then it will ignore 
+	dependsOnMethods flag... thereby even if transfer1() fails
+	delete() will execute...
+	
+	When dependsOnMethods flag is present then priority flag will not have importace	
+
+	We cannot disable register() bcoz delete() is dependent on register()
+	So if register() wont run, then delete() also wont run
+
+
+
+
+
+
+
+
+
+		Annotations
+	@BeforeSuite - It executes before start of every test Suite
+	Connect to DataBase Program
+
+	@BeforeTest - It executes before every test Runner
+	Custom Report - Keep ready
+
+	@BeforeClass - It executes before every Class
+	Open the browser Enter the URL
+
+	@BeforeMethod - It executes before every test method
+	Login to App Program
+
+	@Test - This annotation is used for execution purpose
+	We write Test Cases.. 
+	CreateCustomerTest, EditCustomerTest
+
+	@AfterMethod - It executes after every test method
+	Logout	Program
+
+	@AfterClass - It executes after every class
+	Close Browser Program
+
+	@AfterTest - It executes after every testRunner
+	Flush the report program
+
+	@AfterSuite - It executes after the end of every test Suite
+	Disconnect from Database
+
+
+
+
+
+	Assertion in TestNG
+=========================================
+	Assertion means verification, it means verifying the 
+	actual result is same as Expected Result
+	
+	There are two types of Assertion in TestNG
+
+	1. Assert Class(HardAssert)
+	2. SoftAssert Class(Verify)
+
+	Difference between Assert and SoftAssert(Verify)
+==========================================================
+	Assert 
+------------------------------------------------
+	1. We use Assert to verify mandatory or critical features
+	2. In Assert, if verification fails then execution stops of that
+		test method, and we get Assertion Error
+	3. All the methods are static, so no need to create any object.
+		Assert.assertEquals(actual,expected);
+	4. Here we dont use assertAll()
+
+	SoftAssert(Verify)
+------------------------------------------------------
+	1. We use SoftAssert to verify non-mandatory or non-critical features
+	2. In SoftAssert, even if verification fails the execution continues 
+		and at the end we get Assertion Error
+	3. All the methods are non-static, so we need to create object.
+		SoftAssert sa=new SoftAssert();
+		sa.assertEquals(actual,expected);
+	4. Here assertAll() is compulsory, and used as the last statement of the test method
+
+
+
+	Methods of Assert are
+	1. Assert.assertEquals(actual, expected) - compares actual with expected,
+			and stops the execution if not matching.
+	2. Assert.fail() - Used to intentionally fail a method for testing purpose
+	3. Assert.assertTrue(condition) - Expects condition to become true, stops 
+		execution if false
+	4. Assert.assertFalse(condition) - Expects condition to become false, stops
+		execution if true
+	
+	
+
+
+
+
+
+		Grouping Execution
+	Planning our execution in such a way that, 
+	We group the required test methods and execute the group to run 
+	those particular test scripts that we need.
+
+	We achieve grouping by two things
+	1. By 'groups' flag: we use groups flag to add test method to a particular group
+				by giving groupname 
+				@Test(groups="SmokeTests")
+
+	2. In XML file, we use tags like 
+		<groups> - used for executing groups
+		<define> - used to define all the groupNames in XML
+		<run> 	 - Used for executing particular group included in it
+		<include> - Used to include a group for execution purpose
+		<exclude> - Used to exclude a group so that we dont want it to execute
+
+	
+
+
+
+
+
+
+	Data Driven Concept in TestNG
+Process of storing the data in data Banks/data Repositories and fetching 
+	them into the test scripts is Data Driven Concept in TestNG
+
+	To achieve this we use two things
+ 1.@DataProvider (DataProvider Annotation)
+ 2. dataProvider flag
+
+	1.@DataProvider (DataProvider Annotation)
+	This annotation is used to create a data repository and supply it to test method.
+	Here We create an object of 2 Dimension Array and Store data inside it
+	Object[][] obj=new Object[2][3]
+		obj[0][0]="admin1";
+		obj[0][1] ="manager1";
+		obj[0][2]="Goa";
+
+		obj[1][0]= "admin2";
+		obj[1][1]="manager2";
+		obj[1][2]="Vizag";
+
+	2 --> 2 rows also means 2 set of data is present
+	3 --> 3 columns also means no of data present in each set
+	Here 2 arrays are present , one for rows and one for columns
+	Rows represent how many set of data 
+	Columns represent how many parameters we want in test method
+        
+	We need to give return type of databank method as Object[][]
+
+
+	@DataProvider(name="set2")
+	public Object[][] dataBank2()
+
+	2. dataProvider flag
+	This flag is used to Identify a particular dataBank.
+	Here we can directly use databank method name/ @Test(dataProvider="dataBank2")
+	we can use name flag's value of dataBank method/  @Test(dataProvider="set2")    
+
+
+	we need to parameterize the test method to catch the data from dataBank
+	and pass it to the test method
+	public void getCredentials(String un,String pwd, String city)
+
+
+
+
+
+
+
+		
+Data Parameterisation: Fetching the data through the parameters of test method
+	Reading Data from XML
+	We use 
+	1. <parameter> tag
+ 	2. @Parameters (Parameters Annotation)
+
+	1. <parameter> tag - It is used to store the data 
+		we use attributes called 'name' and 'value'
+	<parameter name="browser" value="chrome"> </parameter>
+
+	@Parameters - Used to identify which parameter value we require
+	This is also Method level annotation just like @Test which 
+	should be written above the method
+
+	@Parameters("Parameter Name")  --> It will give parameter value
+	which we can catch by parameters of test method
+	
+	@Test
+	public void getParameterValue(String browserName)
+
+		Reporter.log(browserName,true)
+
+	Note: Always run the .xml file bcoz data is coming from it
+	Write XML+Program
+
+
+
+
+
+
+
+
+	Parallel Execution
+	Planning our execution so as run the scripts parallelly 
+	
+	Uses of Parallel Execution
+	1. To execute test scripts within less time, hence reducing execution time
+	2. To obtain the test execution results faster 
+
+	Two Types 
+	1. Distributed Parallel Execution
+	2. Cross Browser Parallel Execution
+
+	1. Distributed Parallel Execution: In this type, we distribute the test scripts
+					across multiple threads and run all the threads
+					parallelly
+	
+	2. Cross Browser Parallel Execution:	
+		Cross Browser means testing application across different browsers
+		Cross Browser Parallel Execution means executing the same set of 
+		test scripts in different browsers parallelly
+
+		How to run parallelly?
+	By Using the attribute called 'parallel' in <suite> tag
+		
+	To run test methods parallelly
+		<suite name="Suite" parallel="methods">
+	To run test classes parallelly
+		<suite name="Suite" parallel="classes">
+	To run test runners parallelly
+		<suite name="Suite" parallel="tests">
+	
+	To stop running parallelly / to run sequentially, we can use
+		<suite name="Suite" parallel="none">
+
+	Note: Maximum thread limit in testNG is 5... Bcoz if we try to use more than
+        	5 threads, execution performance/speed becomes slow
+
+
+
+
+
+		
+		
+
+
+
+
+	TestNG Listeners
+	Listeners "listen" to every action/event defined in the selenium script and behave accordingly. 
+	It is used in selenium by implementing ITestListener Interface of TestNG. 
+	It allows customizing TestNG reports or logs.
+
+	How do you integrate TestNG Listeners with our test methods???
+	We use a class level annotation called 
+	@Listeners(path of listener implementation class)
+	
+	@Listeners(com.actitime.genericLib.MyListener.class)
+	public class CreateUser extends BaseTest
+
+
+	
+	TestNG Listener has following methods
+
+    OnStart- OnStart method is called when every TestRunner Execution starts.
+    onTestSuccess- onTestSuccess method is called on the success of any Test.
+    onTestFailure- onTestFailure method is called on the failure of any Test.
+    onTestSkipped- onTestSkipped method is called on skipped of any Test.
+    onTestFailedButWithinSuccessPercentage- method is called each time Test fails
+					 but is within success percentage.
+    onFinish- onFinish method is called after every TestRunner execution is finished.
+
+	Steps: 
+	1. Create a Class and make sure it implements ITestListener  (interface)
+	2. Mouse Hover on the class name and click on 'Add Unimplemented methods'
+		All the incomplete(abstract) methods will automatically come and fall in this class
+	3. Start writing the action you need to perform at each and every listener level
+	   onTestFailure- We can write taking screenshot program so that it will take a screenshot
+		every time when a test method fails
+	4. There are interfaces like ITestContext(TestRunnerLevel) and ITestResult(TestMethodLevel)
+		which is helpful in getting test method names by using getName() method.
+
+	
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

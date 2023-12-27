@@ -1,0 +1,36 @@
+Sravan
+Harihara
+Sanjay
+Ashok
+Vishnu varma
+Vamshi Salla
+
+http://poojastore.marolix.com/
+pooja132@gmail.com 
+password - 1234 
+
+
+ENVISION
+http://envisionuat.marolix.com/Authenticate/Login
+Username: admin@envision.com
+Paasword: test@123
+
+EMPIREHOME
+http://empirehome.myprojectsonline.co.in/
+Username: sureshbabuemp@gmail.com
+Paasword: ZPMHQHIA
+EHOME project is final
+
+HOSPIOL
+https://admin.hospiol.com/site/login
+https://testing.hospiol.com/site/login
+Admin:sampath.marolix@gmail.com
+Paasword: sampath@777
+
+
+
+nopCommerce
+When User opens URL "http://admin-demo.nopcommerce.com/login" 
+ Email as "admin@yourstore.com" 
+ Password as "admin" 
+
