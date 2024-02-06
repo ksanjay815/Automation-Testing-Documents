@@ -12,6 +12,7 @@ password - 1234
 
 ENVISION
 http://envisionuat.marolix.com/Authenticate/Login
+http://envisionuat.marolix.com
 Username: admin@envision.com
 Paasword: test@123
 

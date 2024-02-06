@@ -1,0 +1,28 @@
+
+
+GitHub Credentials
+
+id - sanjaykumar.marolix@gmail.com
+
+click settings - developer settings - personal access tokens - tokens classic - click on generate token - enter name - select expiry as your choice- generate token - copy token
+
+
+token id - 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
+
+
+
+
+
+
+
+git config --global credential.useHttpPath true
+
+git config --global -e
+
+git config user.name ""
+
+git config user.email ""
+
+
+Shift + t for going to last line
+write comment "  " and press WQ + Enter

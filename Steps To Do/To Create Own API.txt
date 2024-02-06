@@ -1,0 +1,20 @@
+To Create Own API we have to install node js and json server
+
+1. Download & install NodeJS (it will default install with npm)
+2. set the path in environment variable
+3. check in cmd if it is installed or not 
+
+node --version
+npm -- version
+
+4. Install json-server by entering   npm install -g json-server
+
+5. go to folder & open cmd where all json files u have saved and type
+
+json-server students.json--> enter               (where students.json is filename.json)
+
+now copy the generated localhost from endpoints and paste it in browser to see the results
+
+eg - http://localhost:3000/students (paste it in browser)
+
+JSON - Java Script Object Notation

@@ -1,0 +1,121 @@
+API - Application programming interface 
+
+Always use json/xml format because it is encrypted
+
+
+Postman - It is an API Manual testing tool
+RestAssured - It is for Automation API Testing
+
+API is the way of communication b/w two applications where applications may differ
+in their platform in terms of technology.
+
+Client - is a computer hardware device or software that access a service made available by a server
+eg- computer, laptop, phone, browser, website
+
+Server - is a physical computer dedeicated to run services and to serve the needs of other computers.
+it could be  file server, database server, web server etc.
+
+
+Two types of API
+1. SOAP (Simple object access protocol)  - old
+2. REST (Representational state transfer) - latest
+
+Both are web-services
+
+All web-services are API's but all API's are not web-services.
+web-services needs a network but APi's doesn't needs a network.
+
+
+REST API's Methods/ HTTP Requests
+1. GET - to get response from server
+2. POST - to send data to store in the server
+3. PUT - to update existing data
+4. PATCH - same as put but it will only update 1 data
+5. DELETE - to delete existing data
+
+
+http - sending data in normal format
+https - sending data in encrypted format
+
+PAYLOAD
+
+Request Payload - Data which is sending through request is called request payload.
+Response Payload - Data which is getting from response is called response payload.
+
+
+
+Workspace - area where we maintain files and saved.
+
+Step 1- to create a new workspace 
+
+click on workspace-->create workspace-->next-->enter name & summary-->select team -->finish
+
+Step 2- create collection
+Collection is a folder contains no of sub folders and multiple requests.
+we can create no of collections in a workspace.
+
+
+
+
+Assertions & validation- for this below topic watch session-4 video of API testing with Postman SDET pavan
+
+Validating Status Code
+
+// to validate the status code 
+pm.test("status code is 200", () =>{
+    pm.response.to.have.status(200);
+});
+
+// to validate any one of the status code 
+pm.test("successful GET request", () =>{
+    pm.expect(pm.response.code).to.be.oneOf([200,202]);
+});
+pm.test("successful POST request", () =>{
+    pm.expect(pm.response.code).to.be.oneOf([201,202]);
+});
+
+pm.test("status code name has string", () =>{
+     pm.response.to.have.status("Created");
+});
+
+pm.test("status code is 204", () =>{
+    pm.response.to.have.status(204);
+});
+
+
+Validating Headers
+
+// to validate Headers Content-Type is present or not
+pm.test("Content-Type header is present", () =>{
+    pm.response.to.have.header("Content-Type");
+});
+
+
+// to validate Headers Content-Type value
+pm.test("Content-Type header is application/json", () =>{
+    pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json; charset=utf-8');
+});
+
+
+Validating Response time
+
+// to validate Response time
+pm.test("Response time should be below 100ms", () =>{
+    pm.expect(pm.response.responseTime).to.be.below(100);
+});
+
+
+Validating Response Body
+
+const jsonData=pm.response.json();
+pm.test("Test datatype of the response", ()=>{
+    pm.expect(jsonData).to.be.an("object");
+    pm.expect(jsonData.first_name).to.be.a("string");
+    pm.expect(jsonData.id).to.be.a("number");
+});
+
+
+
+
+
+
